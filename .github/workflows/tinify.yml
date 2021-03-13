@@ -24,21 +24,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        with:
-          # Number of commits to fetch. 0 indicates all history for all branches and tags.
-          # Default: 1
-          fetch-depth: 2
-      - name: rename last changed files
+      - name: check last changed files
         run: git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
-      # Runs a single command using the runners shell
-      - name: Check files
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git reset --soft HEAD~1 &&
-          git commit --allow-empty -m "tinify-copy" &&
-          git push origin main --force
       - uses: namoscato/action-tinify@v1
         with:
           api_key: ${{ secrets.TINIFY_API_KEY }}
-          github_token: ${{ secrets.REPO_TOKEN }}
+          github_token: ${{ secrets.REPO_TOKEN }}      
+      - name: repo-sync
+        uses: andstor/copycat-action@v3
+        with:
+          personal_token: ${{ secrets.DST_REPO_TOKEN }}
+          src_path: /img/
+          src_branch: main
+          dst_path: /img/
+          dst_branch: main
+          dst_owner: robust_wq
+          dst_repo_name: cdn
