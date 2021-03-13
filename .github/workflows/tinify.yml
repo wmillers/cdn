@@ -27,7 +27,7 @@ jobs:
         with:
           # Number of commits to fetch. 0 indicates all history for all branches and tags.
           # Default: 1
-          fetch-depth: 3
+          fetch-depth: 2
       - uses: namoscato/action-tinify@v1
         with:
           api_key: ${{ secrets.TINIFY_API_KEY }}
@@ -39,6 +39,6 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git reset --soft HEAD~2 &&
+          git reset --soft HEAD~1 &&
           git commit --allow-empty -m "tinify-copy" &&
           git push origin main --force
