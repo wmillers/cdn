@@ -38,5 +38,5 @@ jobs:
           src_branch: main
           dst_path: /img/
           dst_branch: main
-          dst_owner: robust_wq
+          dst_owner: robust-wq
           dst_repo_name: cdn
