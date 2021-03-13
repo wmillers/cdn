@@ -33,6 +33,9 @@ jobs:
       - name: repo-sync
         uses: andstor/copycat-action@v3
         with:
+          username: github-actions[bot]
+          email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: beep..reCHaRgeD
           personal_token: ${{ secrets.DST_REPO_TOKEN }}
           src_path: /img/
           src_branch: main
