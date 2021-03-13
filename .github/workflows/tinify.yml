@@ -27,7 +27,7 @@ jobs:
       - uses: namoscato/action-tinify@v1
         with:
           api_key: ${{ secrets.TINIFY_API_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.REPO_TOKEN }}
     
 
       # Runs a single command using the runners shell
