@@ -39,7 +39,7 @@ jobs:
           personal_token: ${{ secrets.DST_REPO_TOKEN }}
           src_path: /img/
           src_branch: main
-          dst_path: /img/
+          dst_path: /
           dst_branch: main
           dst_owner: robust-wq
           dst_repo_name: cdn
