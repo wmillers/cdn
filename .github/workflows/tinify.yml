@@ -25,7 +25,7 @@ jobs:
           clean: true
           personal_token: ${{ secrets.DST_REPO_TOKEN }}
           exclude: .github/*
-          src_path: /
+          src_path: ./
           src_branch: main
           dst_path: /
           dst_branch: main
