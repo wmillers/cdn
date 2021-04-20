@@ -1,0 +1,21 @@
+
+#!/bin/sh
+if [ $# != 1 ] ; then
+	echo "USAGE: $0 [Image file path]"
+	echo " e.g.: $0 ~/download/rad.png"
+	exit 1;
+fi
+filename="$1"
+# filename="`readlink -m $1`"
+nfname="`date '+%Y%m%d%H%M%S'``echo .${filename##*.}|tr [:upper:] [:lower:]`"
+cd "$(dirname "$0")"
+echo "![](https://cdn.jsdelivr.net/gh/robust-wq/cdn/img/$nfname)"
+echo PULLING...
+git pull
+cp "$filename" "./img/$nfname"
+git add -A
+git commit -m "Add $nfname"
+echo PUSHING...
+git push
+echo DONE
+
